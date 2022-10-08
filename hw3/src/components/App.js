@@ -13,18 +13,35 @@ function App() {
   const Add = (value) => {
     const len = list.length;
     setList([...list, { name: value, id: len, completed: false }]);
-    setUncompleted(list.filter(function (item) { return item.completed == false }).length + 1)
+    setUncompleted(list.filter(task => { return task.completed === false }).length + 1)
   }
 
   const CompletedChange = (pos) => {
-    const newList = list;
-    newList[pos].completed = !newList[pos].completed;
+    let newList = list;
+    for (var a = 0; a < newList.length; a++) {
+      if (newList[a].id === pos) {
+        newList[a].completed = !newList[a].completed;
+        break;
+      }
+    }
+    setUncompleted(newList.filter(task => { return task.completed === false }).length)
     setList(newList);
-    console.log(list);
-    setUncompleted(list.filter(function (item) { return item.completed == false }).length)
   }
 
-  if (list.length == 0) {
+  const DeleteTask = (pos) => {
+    let deletedList = [];
+    for (let a = 0; a < list.length; a++) {
+      if (list[a].id !== pos) {
+        console.log(list[a].id);
+        deletedList.push(list[a]);
+      }
+    }
+    setUncompleted(deletedList.filter(task => { return task.completed === false }).length);
+    setList(deletedList);
+    
+  }
+
+  if (list.length === 0) {
     return (
       <div id="root" className="todo-app__root">
 
@@ -50,7 +67,7 @@ function App() {
 
         <section className="todo-app__main">
           <AddTask Add={Add} />
-          <TaskList list={list} CompletedChange={CompletedChange} />
+          <TaskList list={list} CompletedChange={CompletedChange} DeleteTask={DeleteTask} />
         </section>
 
         <footer className="todo-app__footer" id="todo-footer">

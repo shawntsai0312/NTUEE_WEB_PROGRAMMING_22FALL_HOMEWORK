@@ -6,7 +6,7 @@ function TaskList(props) {
     return (
         <ul className="todo-app__list" id="todo-list">
             {
-                props.list.map(item => { return <Task elem={item} CompletedChange={props.CompletedChange}/> })
+                props.list.map(item => { return <Task elem={item} CompletedChange={props.CompletedChange} DeleteTask={props.DeleteTask}/> })
             }
         </ul>
     );
