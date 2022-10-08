@@ -1,9 +1,9 @@
 import './styles.css';
 
-function Clear() {
+function Clear(props) {
     return (
         <div className='todo-app__clean'>
-            <button>Clear completed</button>
+            <button onClick={() => props.ClearCompleted()}>Clear completed</button>
         </div>
     )
 }

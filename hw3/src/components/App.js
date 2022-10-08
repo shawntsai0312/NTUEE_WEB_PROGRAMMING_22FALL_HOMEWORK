@@ -29,16 +29,25 @@ function App() {
   }
 
   const DeleteTask = (pos) => {
-    let deletedList = [];
+    let newList = [];
     for (let a = 0; a < list.length; a++) {
       if (list[a].id !== pos) {
-        console.log(list[a].id);
-        deletedList.push(list[a]);
+        newList.push(list[a]);
       }
     }
-    setUncompleted(deletedList.filter(task => { return task.completed === false }).length);
-    setList(deletedList);
-    
+    setUncompleted(newList.filter(task => { return task.completed === false }).length);
+    setList(newList);
+  }
+
+  const ClearCompleted = ()=>{
+    let newList = [];
+    for (let a = 0; a < list.length; a++) {
+      if (list[a].completed===false) {
+        newList.push(list[a]);
+      }
+    }
+    setUncompleted(newList.filter(task => { return task.completed === false }).length);
+    setList(newList);
   }
 
   if (list.length === 0) {
@@ -73,7 +82,7 @@ function App() {
         <footer className="todo-app__footer" id="todo-footer">
           <LeftCount Count={uncompletd} />
           <Filter />
-          <Clear />
+          <Clear ClearCompleted={ClearCompleted} />
         </footer>
 
       </div>
