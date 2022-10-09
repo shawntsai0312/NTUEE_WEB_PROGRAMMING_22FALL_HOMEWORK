@@ -4,7 +4,7 @@ import LeftCount from "./LeftCount"
 import Filter from "./Filter"
 import Clear from "./Clear"
 import './styles.css';
-import { useState, useEffect } from 'react'
+import { useState, useEffect,useId } from 'react'
 
 function App() {
   //state variable
@@ -14,8 +14,8 @@ function App() {
   const [filterList, setFilterList] = useState([]);
 
   const Add = (value) => {
-    const len = list.length;
-    setList([...list, { name: value, id: len, completed: false }]);
+    const newId = Math.random();
+    setList([...list, { name: value, id: newId, completed: false }]);
     setUncompleted(list.filter(task => { return task.completed === false }).length + 1)
   }
 
