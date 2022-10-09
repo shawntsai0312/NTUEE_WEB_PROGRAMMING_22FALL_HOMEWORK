@@ -4,12 +4,15 @@ import LeftCount from "./LeftCount"
 import Filter from "./Filter"
 import Clear from "./Clear"
 import './styles.css';
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 function App() {
+  //state variable
   const [uncompletd, setUncompleted] = useState(0);
-
+  const [filterStatus, setFilterStatus] = useState("all");
   const [list, setList] = useState([]);
+  const [filterList, setFilterList] = useState([]);
+
   const Add = (value) => {
     const len = list.length;
     setList([...list, { name: value, id: len, completed: false }]);
@@ -39,15 +42,45 @@ function App() {
     setList(newList);
   }
 
-  const ClearCompleted = ()=>{
+  const ClearCompleted = () => {
     let newList = [];
     for (let a = 0; a < list.length; a++) {
-      if (list[a].completed===false) {
+      if (list[a].completed === false) {
         newList.push(list[a]);
       }
     }
     setUncompleted(newList.filter(task => { return task.completed === false }).length);
     setList(newList);
+  }
+
+  const HandleStatus = (value) => {
+    // console.log(value);
+    setFilterStatus(value);
+  }
+
+  useEffect(() => {
+    HandleFilter();
+  }, [list, filterStatus]);
+
+  const HandleFilter = () => {
+    switch (filterStatus) {
+      case 'active': {
+        console.log("active mode");
+        setFilterList(list.filter(task => task.completed === false));
+        break;
+      }
+
+      case 'completed': {
+        console.log("completed mode");
+        setFilterList(list.filter(task => task.completed === true));
+        break;
+      }
+      default: {
+        console.log("default mode");
+        setFilterList(list);
+        break;
+      }
+    }
   }
 
   if (list.length === 0) {
@@ -67,26 +100,49 @@ function App() {
       </div>
     );
   } else {
-    return (
-      <div id="root" className="todo-app__root">
+    if (list.length - uncompletd === 0) {
+      return (
+        <div id="root" className="todo-app__root">
 
-        <header className="todo-app__header">
-          <h1 className="todo-app__title">todos</h1>
-        </header>
+          <header className="todo-app__header">
+            <h1 className="todo-app__title">todos</h1>
+          </header>
 
-        <section className="todo-app__main">
-          <AddTask Add={Add} />
-          <TaskList list={list} CompletedChange={CompletedChange} DeleteTask={DeleteTask} />
-        </section>
+          <section className="todo-app__main">
+            <AddTask Add={Add} />
+            <TaskList FilterList={filterList} List={list} CompletedChange={CompletedChange} DeleteTask={DeleteTask} />
+          </section>
 
-        <footer className="todo-app__footer" id="todo-footer">
-          <LeftCount Count={uncompletd} />
-          <Filter />
-          <Clear ClearCompleted={ClearCompleted} />
-        </footer>
+          <footer className="todo-app__footer" id="todo-footer">
+            <LeftCount Count={uncompletd} />
+            <Filter Status={HandleStatus} />
+          </footer>
 
-      </div>
-    );
+        </div>
+      );
+    } else {
+      return (
+        <div id="root" className="todo-app__root">
+
+          <header className="todo-app__header">
+            <h1 className="todo-app__title">todos</h1>
+          </header>
+
+          <section className="todo-app__main">
+            <AddTask Add={Add} />
+            <TaskList FilterList={filterList} List={list} CompletedChange={CompletedChange} DeleteTask={DeleteTask} />
+          </section>
+
+          <footer className="todo-app__footer" id="todo-footer">
+            <LeftCount Count={uncompletd} />
+            <Filter Status={HandleStatus} />
+            <Clear ClearCompleted={ClearCompleted} />
+          </footer>
+
+        </div>
+      );
+    }
+
   }
 
 

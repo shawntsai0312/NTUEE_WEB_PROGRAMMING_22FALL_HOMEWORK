@@ -1,11 +1,11 @@
 import './styles.css';
 
-function Filter(){
+function Filter(props){
     return(
         <ul className='todo-app__view-buttons'>
-            <button>All</button>
-            <button>Active</button>
-            <button>Completed</button>
+            <button onClick={()=>props.Status("all")}>All</button>
+            <button onClick={()=>props.Status("active")}>Active</button>
+            <button onClick={()=>props.Status("completed")}>Completed</button>
         </ul>
     )
 }
