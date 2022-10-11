@@ -65,7 +65,7 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
     };
 
     const revealCell = (x, y) => {
-        if (board[x][y].revealed || gameOver || board[x][y].flagged) return;
+        if (board[x][y].revealed || gameOver || board[x][y].flagged || win) return;
         let newBoard = JSON.parse(JSON.stringify(board));
 
         // Basic TODO: Complete the conditions of revealCell (Refer to reveal.js)
@@ -97,7 +97,7 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
                     }
                 }
             }
-            if(winTest){
+            if (winTest) {
                 console.log("win");
                 setWin(true);
             }
@@ -135,6 +135,9 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
                 </div>
 
             </div>
+            {
+                gameOver | win ? <Modal win={win}/> : <></>
+            }
         </div>
     );
 
