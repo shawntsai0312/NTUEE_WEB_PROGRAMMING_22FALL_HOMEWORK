@@ -136,7 +136,7 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
 
             </div>
             {
-                gameOver | win ? <Modal win={win}/> : <></>
+                gameOver | win ? <Modal restartGame={restartGame} backToHome={backToHome} win={win} /> : <></>
             }
         </div>
     );
