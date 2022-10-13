@@ -17,14 +17,22 @@ export default function Dashboard({ remainFlagNum, gameOver }) {
   // Advanced TODO: Implement the timer on the Dashboard
   {/* Useful Hint: Try to understand the difference between time and sTime. */ }
 
-  useEffect(() => {
-    
-  }, []);
 
   useEffect(() => {
+    timeIntervalId=setInterval(
+      ()=>setTime(time+1),1000
+    )
+    return ()=>clearInterval(timeIntervalId);
+  }, [time]);
 
-  }, []);
+  useEffect(() => {
+    handleSTime()
+  }, [gameOver]);
 
+  const handleSTime = () => {
+    setSTime(time);
+    setTime(0);
+  }
 
   return (
     <div className="dashBoard" >

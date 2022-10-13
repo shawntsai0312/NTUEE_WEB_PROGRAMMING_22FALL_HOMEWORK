@@ -8,7 +8,7 @@
 
 import './MineSweeper.css';
 import Board from '../components/Board'
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import HomePage from '../components/HomePage'
 
 const MineSweeper = () => {
@@ -18,22 +18,33 @@ const MineSweeper = () => {
 
     // Basic TODO: Change `startGame` from false to true when this function is called
     const startGameOnClick = () => {
-        setStartGame(!startGame);
+        if (mineNum < boardSize * boardSize) {
+            setStartGame(!startGame);
+        } else {
+            console.log(mineNum, boardSize * boardSize);
+        }
     }
 
     // Advanced TODO: Change `mineNum` to the number you send by this function
-    const mineNumOnChange = (value) => {
-
+    const mineNumOnChange = (e) => {
+        setMineNum(e.target.value);
     }
 
     // Advanced TODO: Change `boardSize` to the number you send by this function
-    const boardSizeOnChange = (value) => {
-
+    const boardSizeOnChange = (e) => {
+        setBoardSize(e.target.value);
     }
 
     // Advanced TODO: Change `startGame` from true to false when this function is called
     const backToHomeOnClick = () => {
         setStartGame(false);
+    }
+
+    useEffect(() => handleMineUpperLimit(), [boardSize]);
+    const handleMineUpperLimit = () => {
+        if (mineNum >= boardSize * boardSize) {
+            setMineNum(boardSize * boardSize - 1);
+        }
     }
 
     return (

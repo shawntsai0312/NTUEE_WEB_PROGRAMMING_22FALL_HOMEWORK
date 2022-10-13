@@ -35,6 +35,7 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
         // Hint: Read the definition of those Hook useState functions and make good use of them.
         setBoard(newBoard.board);
         setMineLocations(newBoard.mineLocations);
+        setRemainFlagNum(0);
     }
 
     const restartGame = () => {
@@ -100,6 +101,7 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
             if (winTest) {
                 console.log("win");
                 setWin(true);
+                setGameOver(true);
             }
         }
     };

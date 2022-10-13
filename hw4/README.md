@@ -17,3 +17,7 @@
 ![](https://i.imgur.com/nLgxGL2.png)
 ![](https://i.imgur.com/5TwVv4A.png)
 ![](https://i.imgur.com/BvhORok.png)
+
+
+1.基本功能已完成
+2.進階功能改進homepage的滑桿，以避免不合理的遊戲參數，即炸彈數小於格子數
