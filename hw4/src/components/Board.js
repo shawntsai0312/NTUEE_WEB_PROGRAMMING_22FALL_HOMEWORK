@@ -35,6 +35,7 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
         // Hint: Read the definition of those Hook useState functions and make good use of them.
         setBoard(newBoard.board);
         setMineLocations(newBoard.mineLocations);
+        setNonMineCount(boardSize * boardSize - mineNum);
         setRemainFlagNum(0);
     }
 
@@ -74,7 +75,7 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
         //       Else if `Reveal the number cell`, check ...?
         // Reminder: Also remember to handle the condition that after you reveal this cell then you win the game.
 
-        newBoard[x][y].revealed = true;
+        revealed(newBoard, x, y, nonMineCount);
         setBoard(newBoard);
 
         if (board[x][y].value === '💣') {
