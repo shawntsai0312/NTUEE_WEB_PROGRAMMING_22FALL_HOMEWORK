@@ -36,7 +36,7 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
         setBoard(newBoard.board);
         setMineLocations(newBoard.mineLocations);
         setNonMineCount(boardSize * boardSize - mineNum);
-        setRemainFlagNum(0);
+        setRemainFlagNum(mineNum);
     }
 
     const restartGame = () => {
@@ -58,9 +58,13 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
         // Update board and remainFlagNum in the end
 
         if (!board[x][y].revealed) {
-            newBoard[x][y].flagged = !newBoard[x][y].flagged;
-            if (newBoard[x][y].flagged) newFlagNum++;
-            else newFlagNum--;
+            if (!newBoard[x][y].flagged && remainFlagNum > 0) {
+                newFlagNum--;
+                newBoard[x][y].flagged = !newBoard[x][y].flagged;
+            } else if (newBoard[x][y].flagged) {
+                newFlagNum++;
+                newBoard[x][y].flagged = !newBoard[x][y].flagged;
+            }
             setBoard(newBoard);
             setRemainFlagNum(newFlagNum);
         }
