@@ -41,10 +41,6 @@ const useWordle = (solution) => {
         }
         // (3) Press Enter, store curGuess to guesses, reset curGuess and update parameters .
         let newGuesses = guesses;
-        // newGuesses[turn]=curGuess;
-
-
-
 
         // console.log("Press Enter!!!! Store and reset curGuess!");
 
@@ -54,14 +50,16 @@ const useWordle = (solution) => {
         for (let i = 0; i < 5; i++) {
             let property = { char: '', color: '' };
             property.char = curGuess[i];
+
             let checkYellow = false;
-            for (let i = 0; i < 5; i++) {
-                for (let j = 0; j < 5; j++) {
-                    if (i !== j && curGuess[i] === solution[j]) {
-                        checkYellow = true;
-                    }
+
+            for (let j = 0; j < 5; j++) {
+                if (i !== j && curGuess[i] === solution[j]) {
+                    checkYellow = true;
                 }
             }
+
+            
             if (curGuess[i] === solution[i]) {
                 property.color = 'green';
             } else if (checkYellow) {
@@ -69,8 +67,10 @@ const useWordle = (solution) => {
             } else {
                 property.color = 'grey';
             }
+            // console.log(property);
             subarray.push(property);
         }
+        console.log(subarray);
         newGuesses[turn] = subarray;
         // add the formatted guess generated into guesses.
         setGuesses(newGuesses);
