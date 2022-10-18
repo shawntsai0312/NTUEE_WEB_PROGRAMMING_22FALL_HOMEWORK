@@ -19,10 +19,10 @@ const Row = ({ guess, rowIdx }) => {
             {/* ↓ Default row, you should modify it. ↓ */}
             <div className='Row-wrapper'>
                 <div className={guess === undefined ? 'Row-wordbox' : 'Row-wordbox ' + guess[0].color} id={toString(rowIdx) + "_0"} key={toString(rowIdx) + "_0"}>{guess === undefined ? "" : guess[0].char}</div>
-                <div className={guess === undefined ? 'Row-wordbox' : 'Row-wordbox ' + guess[1].color} key={toString(rowIdx) + "_1"}>{guess === undefined ? "" : guess[1].char}</div>
-                <div className={guess === undefined ? 'Row-wordbox' : 'Row-wordbox ' + guess[2].color} key={toString(rowIdx) + "_2"}>{guess === undefined ? "" : guess[2].char}</div>
-                <div className={guess === undefined ? 'Row-wordbox' : 'Row-wordbox ' + guess[3].color} key={toString(rowIdx) + "_3"}>{guess === undefined ? "" : guess[3].char}</div>
-                <div className={guess === undefined ? 'Row-wordbox' : 'Row-wordbox ' + guess[4].color} key={toString(rowIdx) + "_4"}>{guess === undefined ? "" : guess[4].char}</div>
+                <div className={guess === undefined ? 'Row-wordbox' : 'Row-wordbox ' + guess[1].color} id={toString(rowIdx) + "_1"} key={toString(rowIdx) + "_1"}>{guess === undefined ? "" : guess[1].char}</div>
+                <div className={guess === undefined ? 'Row-wordbox' : 'Row-wordbox ' + guess[2].color} id={toString(rowIdx) + "_2"} key={toString(rowIdx) + "_2"}>{guess === undefined ? "" : guess[2].char}</div>
+                <div className={guess === undefined ? 'Row-wordbox' : 'Row-wordbox ' + guess[3].color} id={toString(rowIdx) + "_3"} key={toString(rowIdx) + "_3"}>{guess === undefined ? "" : guess[3].char}</div>
+                <div className={guess === undefined ? 'Row-wordbox' : 'Row-wordbox ' + guess[4].color} id={toString(rowIdx) + "_4"} key={toString(rowIdx) + "_4"}>{guess === undefined ? "" : guess[4].char}</div>
             </div>
             {/* ↑ Default row, you should modify it. ↑ */}
         </div>
