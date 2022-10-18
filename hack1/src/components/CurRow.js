@@ -16,20 +16,7 @@ const CurRow = ({ curGuess, rowIdx }) => {
     return (
         <div className='Row-container'>
             {/* TODO 3: Row Implementation -- CurRow */}
-            {/* {
-                // console.log(curGuess);
-                curGuess.map(
-                    (elem,elemIndex)=>{
-                        let idName = toString(rowIdx)+"-"+elemIndex;
-                        let color = elem.color;
-                        let char = elem.char;
-                        
-                        return(
-                            <div className={"Row-wordbox"+color} id={idName} key={idName}>{char}</div>
-                        )
-                    }
-                )
-            } */}
+            
             {/* ↓ Default row, you should modify it. ↓ */}
             <div className='Row-wrapper current'>
                 <div className='Row-wordbox' id={toString(rowIdx) + "_0"} key={toString(rowIdx) + "_0"}>{curGuess[0]}</div>

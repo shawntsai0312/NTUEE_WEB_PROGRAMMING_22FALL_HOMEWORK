@@ -14,19 +14,6 @@ const Row = ({ guess, rowIdx }) => {
     return (
         <div className='Row-container'>
             {/* TODO 3: Row Implementation -- Row */}
-            {
-                // guess.map(
-                //     (elem,elemIndex)=>{
-                //         
-                //         let color = elem.color;
-                //         let char = elem.char;
-
-                //         return(
-                //             <div className={"Row-wordbox"+color} id={idName} key={idName}>{char}</div>
-                //         )
-                //     }
-                // )
-            }
 
 
             {/* ↓ Default row, you should modify it. ↓ */}

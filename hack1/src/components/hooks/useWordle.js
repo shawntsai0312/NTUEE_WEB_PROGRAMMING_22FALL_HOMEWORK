@@ -82,10 +82,12 @@ const useWordle = (solution) => {
 
         // TODO 5: update parameters, check each char usage and show in `Keyboard` and reset `curGuess`.
         // 5-1) check if curGuess === solution, if true, set `isCorrect` to true.
-
+        if(curGuess===solution){
+            setIsCorrect(true);
+        }
 
         // 5-2) usedChars update
-
+        
 
     }
 
