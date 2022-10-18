@@ -67,7 +67,6 @@ const useWordle = (solution) => {
             } else {
                 property.color = 'grey';
             }
-            // console.log(property);
             subarray.push(property);
         }
         console.log(subarray);
@@ -87,6 +86,7 @@ const useWordle = (solution) => {
         }
 
         // 5-2) usedChars update
+        // let newUsedChars = usedChars;
         
 
     }
