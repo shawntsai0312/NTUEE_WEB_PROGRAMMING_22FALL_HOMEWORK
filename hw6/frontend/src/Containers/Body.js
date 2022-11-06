@@ -107,7 +107,6 @@ const Body = () => {
   const [tabValue, setTabValue] = useState('ADD');
 
   const [allData, setAllData] = useState([]);
-  const [addTableData, setAddTableData] = useState();
   const [queryData, setQuerylData] = useState([]);
 
   const [page, setPage] = useState(0);
@@ -143,7 +142,8 @@ const Body = () => {
     if (!card) addErrorMessage(message);
     else {
       addCardMessage(message);
-      setAddTableData(createData(name, subject, score));
+      // console.log(card)
+      setAllData(card)
     }
   };
 
@@ -173,6 +173,10 @@ const Body = () => {
     addRegularMessage("show all")
   }
 
+  const handleShowAdd = async ()=>{
+    setAllData([]);
+  }
+
   return (
     <>
       <Wrapper >
@@ -180,7 +184,7 @@ const Body = () => {
           <Box style={{ borderBottom: 1, borderColor: 'divider' }}>
             <Tabs value={tabValue} onChange={handleTabChange} aria-label="basic tabs example">
               <Tab label="ALL" value={'ALL'} {...a11yProps(0)} onClick={handleShowAll} />
-              <Tab label="ADD" value={'ADD'} {...a11yProps(1)} />
+              <Tab label="ADD" value={'ADD'} {...a11yProps(1)} onClick={handleShowAdd}/>
               <Tab label="QUERY" value={'QUERY'} {...a11yProps(2)} />
             </Tabs>
           </Box>
@@ -257,33 +261,41 @@ const Body = () => {
                 Add
               </Button>
             </Row>
-            <TableContainer component={Paper}>
-              <Table style={{ minWidth: 650 }} aria-label="simple table">
-                <TableHead>
-                  <TableRow>
-                    <TableCell>Name</TableCell>
-                    <TableCell>Subject</TableCell>
-                    <TableCell>Score</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {
-                    addTableData ?
-                      <TableRow
-                        hover role="checkbox" tabIndex={-1}
-                        key={addTableData.name}
-                        style={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                      >
-                        <TableCell component="th" scope="row">{addTableData.name}</TableCell>
-                        <TableCell>{addTableData.subject}</TableCell>
-                        <TableCell>{addTableData.score}</TableCell>
-                      </TableRow>
-                      : <></>
-                  }
-
-                </TableBody>
-              </Table>
-            </TableContainer>
+            <Paper style={{ width: '100%', overflow: 'hidden' }}>
+              <TableContainer style={{ maxHeight: 225.5 }}>
+                <Table stickyHeader aria-label="sticky table">
+                  <TableHead>
+                    <TableRow>
+                      <TableCell>Name</TableCell>
+                      <TableCell>Subject</TableCell>
+                      <TableCell>Score</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody style={{ maxHeight: 440 }}>
+                    {allData
+                      .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                      .map((data) => {
+                        return (
+                          <TableRow hover role="checkbox" tabIndex={-1} key={data.name + data.subject} >
+                            <TableCell component="th" scope="row">{data.name}</TableCell>
+                            <TableCell >{data.subject}</TableCell>
+                            <TableCell >{data.score}</TableCell>
+                          </TableRow>
+                        );
+                      })}
+                  </TableBody>
+                </Table>
+              </TableContainer>
+              <TablePagination
+                rowsPerPageOptions={[5, 10, 25, 100]}
+                component="div"
+                count={allData.length}
+                rowsPerPage={rowsPerPage}
+                page={page}
+                onPageChange={handleChangePage}
+                onRowsPerPageChange={handleChangeRowsPerPage}
+              />
+            </Paper>
           </TabPanel>
 
           {/*-----------------------------ADD VIEW END-----------------------------*/}

@@ -25,9 +25,16 @@ router.post("/card", (req, res) => {
                 // update data
                 ScoreCard.findOneAndUpdate({ name: inputData.name, subject: inputData.subject }, { score: inputData.score })
                     .then((updateCard) => {
-                        res.send({
-                            message: `Updating(${inputData.name},${inputData.subject},${inputData.score})`
-                            , card: { name: inputData.name, subject: inputData.subject }
+                        ScoreCard.find({ name: inputData.name }, (err, data) => {
+                            let cardData = [];
+                            cardData = data.map((item) => {
+                                return ({ name: item.name, subject: item.subject, score: item.score })
+                            })
+                            console.log(cardData);
+                            res.send({
+                                message: `Updating(${inputData.name},${inputData.subject},${inputData.score})`
+                                , card: cardData
+                            })
                         })
                     })
                     .catch((err) => {
@@ -39,15 +46,23 @@ router.post("/card", (req, res) => {
                 const card = new ScoreCard(inputData);
                 card.save()
                     .then(() => {
-                        res.send({
-                            message: `Adding(${inputData.name},${inputData.subject},${inputData.score})`
-                            , card: { name: inputData.name, subject: inputData.subject }
+                        ScoreCard.find({ name: inputData.name }, (err, data) => {
+                            let cardData = [];
+                            cardData = data.map((item) => {
+                                return ({ name: item.name, subject: item.subject, score: item.score })
+                            })
+                            console.log(cardData);
+                            res.send({
+                                message: `Adding(${inputData.name},${inputData.subject},${inputData.score})`
+                                , card: cardData
+                            })
                         })
                     })
                     .catch((err) => {
                         console.log("add error");
                         console.log(err);
                     })
+
             }
         })
         .catch((err) => {
@@ -68,10 +83,10 @@ router.get("/cards", (req, res) => {
             if (msgArr.length === 0)
                 msgArr = [`QueryType ${queryString} not found!`]
             // console.log(arr);
-            let dataArr = data.map((item)=>{
+            let dataArr = data.map((item) => {
                 return ({ name: item.name, subject: item.subject, score: item.score })
             })
-            res.send({ messages: msgArr, message: err, querydata:dataArr })
+            res.send({ messages: msgArr, message: err, querydata: dataArr })
         })
 
     } else if (req.query.type == 'subject') {
@@ -84,11 +99,11 @@ router.get("/cards", (req, res) => {
             if (msgArr.length === 0)
                 msgArr = [`QueryType ${queryString} not found!`]
             // console.log(arr);
-            let dataArr = data.map((item)=>{
+            let dataArr = data.map((item) => {
                 return ({ name: item.name, subject: item.subject, score: item.score })
             })
             console.log(dataArr);
-            res.send({ messages: msgArr, message: err, querydata:dataArr })
+            res.send({ messages: msgArr, message: err, querydata: dataArr })
         })
     }
 
