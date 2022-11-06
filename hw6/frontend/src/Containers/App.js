@@ -15,6 +15,8 @@ const Wrapper = styled.div`
 
 const StyledPaper = styled(Paper)`
   padding: 2em;
+  width: 50%;
+  height: 70%
 `;
 
 function App() {

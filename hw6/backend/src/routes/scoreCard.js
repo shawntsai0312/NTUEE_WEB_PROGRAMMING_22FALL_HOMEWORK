@@ -61,29 +61,50 @@ router.get("/cards", (req, res) => {
     if (req.query.type == 'name') {
         ScoreCard.find({ name: queryString }, (err, data) => {
             // console.log(data.length)
-            let arr = data.map((item) => {
+            let msgArr = data.map((item) => {
                 let msg = `Found card with name: (${item.name},${item.subject},${item.score})`
                 return msg;
             })
-            if(arr.length===0)
-                arr=[`QueryType ${queryString} not found!`]
+            if (msgArr.length === 0)
+                msgArr = [`QueryType ${queryString} not found!`]
             // console.log(arr);
-            res.send({ messages: arr, message: err })
+            let dataArr = data.map((item)=>{
+                return ({ name: item.name, subject: item.subject, score: item.score })
+            })
+            res.send({ messages: msgArr, message: err, querydata:dataArr })
         })
 
     } else if (req.query.type == 'subject') {
         ScoreCard.find({ subject: queryString }, (err, data) => {
             // console.log(data.length)
-            let arr = data.map((item) => {
+            let msgArr = data.map((item) => {
                 let msg = `Found card with name: (${item.name},${item.subject},${item.score})`
                 return msg;
             })
-            if(arr.length===0)
-                arr=[`QueryType ${queryString} not found!`]
+            if (msgArr.length === 0)
+                msgArr = [`QueryType ${queryString} not found!`]
             // console.log(arr);
-            res.send({ messages: arr, message: err })
+            let dataArr = data.map((item)=>{
+                return ({ name: item.name, subject: item.subject, score: item.score })
+            })
+            console.log(dataArr);
+            res.send({ messages: msgArr, message: err, querydata:dataArr })
         })
     }
 
 });
+
+router.get("/allcards", (req, res) => {
+    // show all
+    console.log("show all");
+    ScoreCard.find({}, (err, data) => {
+        // console.log(data);
+        let arr = data.map((item) => {
+            return ({ name: item.name, subject: item.subject, score: item.score })
+            // console.log(item)
+        })
+        // console.log(arr)
+        res.send({ alldata: arr });
+    })
+})
 export default router;
