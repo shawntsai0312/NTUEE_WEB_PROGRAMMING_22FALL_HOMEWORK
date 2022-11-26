@@ -63,11 +63,6 @@ export default {
                                 res.messages.push(message);
                                 res.save();
                             })
-                        ChatBoxModel.findOne({ name: ws.box })
-                            .exec((req, res) => {
-                                console.log(res)
-                            })
-
                     }
                     catch (e) {
                         throw new Error
