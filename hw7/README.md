@@ -1,2 +1,2 @@
 # Web Programming HW#7
-this is hw7
+-all basic function done
