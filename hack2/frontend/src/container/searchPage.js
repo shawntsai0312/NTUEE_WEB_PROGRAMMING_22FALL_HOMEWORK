@@ -38,7 +38,7 @@ const SearchPage = () => {
         // TODO Part I-3-b: get information of restaurants from DB
         console.log(state)
         try {
-            const { data: { contents: restaurant } } = await instance.get('/getsearch', { params: state })
+            const { data: { contents: restaurants } } = await instance.get('/getsearch', { params: state })
             setRestaurant(restaurants);
         } catch (err) {
             if (err.response) {
@@ -54,6 +54,9 @@ const SearchPage = () => {
     const navigate = useNavigate();
     const ToRestaurant = (id) => {
         // TODO Part III-1: navigate the user to restaurant page with the corresponding id
+        navigate(`/restaurant/${id}`, {
+            
+        });
     }
     const getPrice = (price) => {
         let priceText = ""

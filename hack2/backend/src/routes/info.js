@@ -28,14 +28,20 @@ exports.GetSearch = async (req, res) => {
     // TODO Part I-3-a: find the information to all restaurants
     priceFilter,mealFilter,typeFilter? console.log(0):console.log(1)
     // console.log()
-    exportSchema.find()//condition
-        .then((data)=>{
+    exportSchema.find().exec((err,data)=>{
+        if(err){
+            res.status(403).send({ message: 'error', contents: [] })
+        }else{
             res.status(200).send({ message: 'success', contents: data })
-            console.log(data)
-        })
-        .catch((err)=>{
-            res.status(403).send({ message: 'error', contents: err })
-        })
+        }
+    })
+        // .then((data)=>{
+        //     res.status(200).send({ message: 'success', contents: data })
+        //     console.log(data)
+        // })
+        // .catch((err)=>{
+        //     res.status(403).send({ message: 'error', contents: err })
+        // })
     
     // TODO Part II-2-a: revise the route so that the result is filtered with priceFilter, mealFilter and typeFilter
     // TODO Part II-2-b: revise the route so that the result is sorted by sortBy
