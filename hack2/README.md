@@ -224,3 +224,4 @@ Please read this README.md before you do so.
 ## Honor System
 Please DO NOT discuss or consult with anyone during the exam. If you find someone who might violate this rule, or is cheating in the Hackathon, please help fill in this [Google Form](https://docs.google.com/forms/d/e/1FAIpQLSf1atqWqZPYlNNh0RXc6JtK4HeHq2TI4_sVbPNa_tQZcbKmVw/viewform).
 
+dead
