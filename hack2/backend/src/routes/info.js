@@ -28,7 +28,7 @@ exports.GetSearch = async (req, res) => {
     // TODO Part I-3-a: find the information to all restaurants
     priceFilter,mealFilter,typeFilter? console.log(0):console.log(1)
     // console.log()
-    exportSchema.find({price:priceFilter,tag:mealFilter.concat(typeFilter)})//condition
+    exportSchema.find()//condition
         .then((data)=>{
             res.status(200).send({ message: 'success', contents: data })
             console.log(data)

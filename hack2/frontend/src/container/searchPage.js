@@ -37,10 +37,14 @@ const SearchPage = () => {
     const getRestaurant = async () => {
         // TODO Part I-3-b: get information of restaurants from DB
         console.log(state)
-        const { data } = await axios.get('/getSearch', {
-            params: {state}
-        });
-        console.log(data);
+        try {
+            const { data: { contents: restaurant } } = await instance.get('/getsearch', { params: state })
+            setRestaurant(restaurants);
+        } catch (err) {
+            if (err.response) {
+                return (`Error`)
+            }
+        }
     }
     useEffect(() => {
         getRestaurant()
@@ -65,7 +69,7 @@ const SearchPage = () => {
                     // TODO Part I-2: search page front-end
                     // console.log(item.price, `${item.distance / 1000}km`)
                     return (
-                        <div className='resBlock' id={item.id} key={item.id}>
+                        <div className='resBlock' id={item.id} key={item.id} onClick={() => ToRestaurant(item.id)}>
                             <div className='resImgContainer'>
                                 <img className='resImg' src={item.img} />
                             </div>
@@ -73,13 +77,9 @@ const SearchPage = () => {
                                 <div className='title'>
                                     <p className='name'>{item.name}</p>
                                     <p className='price'>{getPrice(item.price)}</p>
-                                    <p className='distance'>{item.distance / 1000}&nbsp;km</p>
+                                    <p className='distance'>{item.distance / 1000 + ' km'}</p>
                                 </div>
-                                <p className='description'>
-                                    {
-                                        item.tag.join(', ')
-                                    }
-                                </p>
+                                <p className='description'>{item.tag.map(((t, i) => ((i === item.tag.length - 1 ? t : t + ', '))))}</p>
                             </div>
                         </div>
                     )
