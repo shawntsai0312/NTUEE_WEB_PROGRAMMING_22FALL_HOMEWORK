@@ -17,28 +17,13 @@ const instance = axios.create({
 
 const SearchPage = () => {
     const { state } = useLocation();
-    const [restaurants, setRestaurant] = useState([
-        // {
-        //     "tag": ["Lunch", "Dinner", "Chinese"],
-        //     "id": 0,
-        //     "name": "合益佳雞肉飯",
-        //     "img": "https://i.imgur.com/E7RZj9d.png",
-        //     "time": {
-        //         "Mon": "16:30-20:00",
-        //         "Tue": "16:30-20:00",
-        //         "Wed": "16:30-20:00",
-        //         "Thr": "16:30-20:00",
-        //         "Fri": "16:30-20:00"
-        //     },
-        //     "distance": 600,
-        //     "price": 1
-        // }
-    ])
+    const [restaurants, setRestaurant] = useState([])
     const getRestaurant = async () => {
         // TODO Part I-3-b: get information of restaurants from DB
         console.log(state)
         try {
-            const { data: { contents: restaurants } } = await instance.get('/getsearch', { params: state })
+            const { data: { contents: restaurants } } = await instance.get('/getSearch', { params: state })
+            console.log(restaurants)
             setRestaurant(restaurants);
         } catch (err) {
             if (err.response) {

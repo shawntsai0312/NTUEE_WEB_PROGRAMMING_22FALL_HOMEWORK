@@ -27,6 +27,14 @@ exports.GetCommentsByRestaurantId = async (req, res) => {
     //    message: 'error'
     //    contents: []
     // }
+    console.log(id)
+    Comment.find({ restaurantId:id }).exec((err, data) => {
+        if (err) {
+            res.status(403).send({ message: 'error', contents: [] })
+        } else {
+            res.status(200).send({ message: 'success', contents: data })
+        }
+    })
 }
 
 exports.CreateComment = async (req, res) => {
@@ -34,4 +42,10 @@ exports.CreateComment = async (req, res) => {
     const body = req.body
     /****************************************/
     // TODO Part III-3-b: create a new comment to a restaurant
+    console.log(body);
+    const newComment = new Comment(body);
+    newComment.save()
+        .then(()=>{
+            console.log('save!')
+        })
 }
