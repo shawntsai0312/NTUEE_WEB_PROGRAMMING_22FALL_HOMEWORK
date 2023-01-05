@@ -28,7 +28,7 @@ import { v4 as uuidv4 } from 'uuid';
 const NewAdditionPage = () => {
     /*--------------------------------------------------hooks declare-----------------------------------------------------*/
     //useContext
-    const { userEmail, isLogIn } = useBetterLinktree();
+    const { userEmail, isLogIn, setMenuListSelected } = useBetterLinktree();
 
     //useState
     const [name, setName] = useState('');
@@ -163,7 +163,8 @@ const NewAdditionPage = () => {
             setDescription('');
             setAddingItems([]);
             setIsNameFilled(true);
-            navigate('/collectionPage')
+            setMenuListSelected('Collection');
+            navigate('/collectionPage');
         } else {
             if (userEmail === '') {
                 console.log("you have not logged in")
@@ -413,11 +414,11 @@ const NewAdditionPage = () => {
                         </Button>
                         {/* confirm button end */}
                         {
-                            !isNameFilled?
-                            <Alert severity="error" >
-                                Merchandise Name Can Not Be Empty
-                            </Alert>
-                            :<></>
+                            !isNameFilled ?
+                                <Alert severity="error" >
+                                    Merchandise Name Can Not Be Empty
+                                </Alert>
+                                : <></>
                         }
                     </Stack>
                     :
