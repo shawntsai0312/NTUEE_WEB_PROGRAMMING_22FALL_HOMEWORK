@@ -43,7 +43,7 @@ const HomePage = ({ startGameOnClick, mineNumOnChange, boardSizeOnChange, mineNu
                 </div>
                 <div className='controlCol'>
                   <p className='controlTitle'>Board Size(nxn)</p>
-                  <input type='range' step='1' min='2' max='25' value={boardSize} defaultValue={boardSize} onChange={boardSizeOnChange} />
+                  <input type='range' step='1' min='2' max='20' value={boardSize} defaultValue={boardSize} onChange={boardSizeOnChange} />
                   <p className='controlNum'>{boardSize}</p>
                 </div>
               </div>

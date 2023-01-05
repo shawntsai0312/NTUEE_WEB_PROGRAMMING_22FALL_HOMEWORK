@@ -24,7 +24,7 @@ export const revealed = (board, x, y, newNonMinesCount) => {
       for (let j = y - 1; j <= y + 1; j++) {
         if (i !== x || j !== y) {
           if (i >= 0 && i < board.length && j >= 0 && j < board.length) {
-            console.log(i, j, board[i][j].value);
+            // console.log(i, j, board[i][j].value);
             if (board[i][j].value === 0 && !board[i][j].revealed && !board[i][j].flagged) {
               revealed(board, i, j, newNonMinesCount);
             } else if (board[i][j].value !== 0 && !board[i][j].revealed && !board[i][j].flagged) {

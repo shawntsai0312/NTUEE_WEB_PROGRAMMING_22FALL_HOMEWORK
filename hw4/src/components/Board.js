@@ -124,7 +124,7 @@ const Board = ({ boardSize, mineNum, backToHome }) => {
                     <Dashboard remainFlagNum={remainFlagNum} gameOver={gameOver} />
                     {
                         board.map((x, xIndex) => {
-                            let idname = "row" + toString(x);
+                            let idname = "row" + x.toString();
                             return (
                                 <div id={idname} style={{ display: 'flex' }}>
                                     {

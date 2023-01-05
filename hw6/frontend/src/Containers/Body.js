@@ -87,8 +87,6 @@ TabPanel.propTypes = {
 function createData(name, subject, score) {
   return { name, subject, score };
 }
-
-
 /*---------------------------------------TABLE---------------------------------------*/
 
 const Body = () => {

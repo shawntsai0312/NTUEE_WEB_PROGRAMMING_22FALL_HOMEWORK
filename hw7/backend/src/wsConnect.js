@@ -20,7 +20,7 @@ export default {
         async (byteString) => {
             const { data } = byteString;
             const { type, payload } = JSON.parse(data);
-            // console.log(type,payload)
+            console.log(type,payload)
             switch (type) {
                 case 'CHAT': { // open a chatbox
                     const { name, to } = payload;

@@ -13,7 +13,6 @@ const Subscription = {
   // TODO 6.2 Define the itemDeleted subscription resolver
   itemDeleted: {
     subscribe: (parent, args, { pubSub }) => {
-      console.log("subD")
       return pubSub.subscribe('ITEM_DELETED');
     }
   }

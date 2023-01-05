@@ -4,7 +4,7 @@ import db from './db';
 import routes from './routes';
 
 const app = express();
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 4001;
 
 db.connect();
 
