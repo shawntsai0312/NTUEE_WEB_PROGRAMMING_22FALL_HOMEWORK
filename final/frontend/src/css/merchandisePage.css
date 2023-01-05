@@ -1,0 +1,20 @@
+.merchandisePageContainer{
+    padding-top: 3vh;
+    padding-left: 5vw;
+    position: fixed; 
+}
+
+.merchandiseTitle {
+    margin: 0px;
+    padding-top: 30px;
+}
+
+.stackItem {
+    width: 70vw;
+}
+
+.nothingFound{
+    display: flex;
+    justify-content: center;
+    color:darkgray;
+}

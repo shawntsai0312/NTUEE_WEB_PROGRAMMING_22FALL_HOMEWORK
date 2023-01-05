@@ -1,0 +1,10 @@
+.MenuText {
+    font-size: 30px;
+    margin: 5px;
+}
+
+.menuListContainer{
+    min-width: 5vw;
+    max-width: 20vw;
+    height: 100vh;
+}

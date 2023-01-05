@@ -1,0 +1,122 @@
+type Query {
+    user(email:String!):User
+    usersSearch(emailSearchedText:String):[User]
+}
+
+type Mutation {
+    logIn(input:LogInInput!):logInOutput
+    createUser(input: CreateUserInput!):String
+    createMerchandise(input: CreateMerchandiseInput!):Merchandise
+    createItem(input: CreateItemInput!):Item
+    updateUserName(input: UpdateUserNameInput!):User
+    updateMerchandise(input: UpdateMerchandiseInput!):Merchandise
+    updateItem(input: UpdateItemInput!):Item
+    updateFollowing(input: UpdateFollowingInput!):Following
+    deleteMerchandise(input: DeleteMerchandiseInput!):ID
+    deleteItem(input: DeleteItemInput!):ID
+    deleteFollowing(input: DeleteFollowingInput!):ID
+}
+
+type Subscription {
+    user:User
+}
+
+type logInOutput {
+    message: String
+    name: String
+}
+
+type Following {
+    name: String!
+    email: String!
+}
+
+type User {
+    id: ID!
+    name: String!
+    email: String!
+    password: String!
+    following: [Following]
+    merchandise: [Merchandise]
+}
+
+type Merchandise {
+    id: ID!
+    name: String!
+    isFavorite: Boolean!
+    items: [Item]
+}
+
+type Item {
+    id: ID!
+    link: String!
+    description: String
+}
+
+input LogInInput {
+    email: String!
+    password: String!
+}
+
+input CreateUserInput {
+    id: ID!
+    name: String!
+    email: String!
+    password: String!
+}
+
+input CreateMerchandiseInput {
+    id: ID!
+    email: String! 
+    name: String!
+    isFavorite: Boolean!
+}
+
+input CreateItemInput {
+    id: ID!
+    email: String!
+    merchandiseId: ID!
+    link: String!
+    description: String
+}
+
+input UpdateUserNameInput {
+    name: String!
+    email: String!
+}
+
+input UpdateMerchandiseInput {
+    id: ID!
+    name: String!
+    email: String!
+    isFavorite: Boolean!
+}
+
+input UpdateItemInput {
+    id: ID!
+    link: String!
+    description: String
+    email: String!
+    merchandiseId: ID!
+}
+
+input UpdateFollowingInput {
+    email: String!
+    myEmail: String!
+}
+
+input DeleteMerchandiseInput {
+    email: String!
+    id: ID!
+}
+
+input DeleteItemInput {
+    email: String!
+    merchandiseId: ID!
+    id: ID!
+}
+
+input DeleteFollowingInput {
+    email: String!
+    myEmail: String!
+}

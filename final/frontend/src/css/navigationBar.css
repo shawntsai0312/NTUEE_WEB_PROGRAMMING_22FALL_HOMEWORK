@@ -1,0 +1,24 @@
+.navBarContainer {
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height: 8vh;
+    background-color: rgb(245, 242, 237);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+#mainIcon {
+    height: 50px;
+}
+
+.userButton {
+    height: 6vh;
+    width: 20vw;
+}

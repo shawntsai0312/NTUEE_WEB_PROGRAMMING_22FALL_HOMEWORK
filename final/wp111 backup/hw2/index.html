@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    </meta>
+    <title>hw2 fake google meet</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <div class="partition">
+        <div id="p1">
+            <div id="你">
+                <img class="host" src="你.png" />
+                <div class="floating_zone">
+                    <div class="floating_menu" onclick="switch_pos(this)">
+                        <img class="floating_menu_pic" src="floating_fixed.png">
+                        <img class="floating_menu_pic" src="floating_setting.png">
+                        <img class="floating_menu_pic" src="floating_minimized.png">
+                    </div>
+                </div>
+            </div>
+            <div id="p1_info">
+                <img class="fixed" src="fixed.png" />
+                <p class="h_name">你</p>
+            </div>
+            <img class="mute" src="h_mute.png">
+        </div>
+        <div id="p2">
+            <!-- hidden block for fixed person-->
+            <div class="participator_background" id="hidden_person">
+                <img class="mute" src="p_mute.png">
+                <p class="p_name" id="hidden_name"></p>
+            </div>
+
+            <div class="participator_background">
+                <img class="mute" src="p_mute.png">
+                <div id="王世堅">
+                    <img class="participator" src="王世堅.png" />
+                    <div class="floating_zone">
+                        <div class="floating_menu" onclick="switch_pos(this)">
+                            <img class="floating_menu_pic" src="floating_unfixed.png">
+                            <img class="floating_menu_pic" src="floating_mute.png">
+                            <img class="floating_menu_pic" src="floating_remove.png">
+                        </div>
+                    </div>
+                    <img class="x" src="x.png" onclick="hide_participator(this)">
+                </div>
+                <p class="p_name">王世堅</p>
+            </div>
+            <div class="participator_background">
+                <img class="mute" src="p_mute.png">
+                <div id="林智堅">
+                    <img class="participator" src="林智堅.png" />
+                    <div class="floating_zone">
+                        <div class="floating_menu" onclick="switch_pos(this)">
+                            <img class="floating_menu_pic" src="floating_unfixed.png">
+                            <img class="floating_menu_pic" src="floating_mute.png">
+                            <img class="floating_menu_pic" src="floating_remove.png">
+                        </div>
+                    </div>
+                    <img class="x" src="x.png" onclick="hide_participator(this)">
+                </div>
+                <p class="p_name">林智堅</p>
+            </div>
+            <div class="participator_background">
+                <img class="mute" src="p_mute.png">
+                <div id="柯文哲">
+                    <img class="participator" src="柯文哲.png" />
+                    <div class="floating_zone">
+                        <div class="floating_menu" onclick="switch_pos(this)">
+                            <img class="floating_menu_pic" src="floating_unfixed.png">
+                            <img class="floating_menu_pic" src="floating_mute.png">
+                            <img class="floating_menu_pic" src="floating_remove.png">
+                        </div>
+                    </div>
+                    <img class="x" src="x.png" onclick="hide_participator(this)">
+                </div>
+                <p class="p_name">柯文哲</p>
+            </div>
+            <div class="participator_background">
+                <img class="mute" src="p_mute.png">
+                <div id="韓國瑜">
+                    <img class="participator" src="韓國瑜.png" />
+                    <div class="floating_zone">
+                        <div class="floating_menu" onclick="switch_pos(this)">
+                            <img class="floating_menu_pic" src="floating_unfixed.png">
+                            <img class="floating_menu_pic" src="floating_mute.png">
+                            <img class="floating_menu_pic" src="floating_remove.png">
+                        </div>
+                    </div>
+                    <img class="x" src="x.png" onclick="hide_participator(this)">
+                </div>
+                <p class="p_name">韓國瑜</p>
+            </div>
+            <div class="participator_background">
+                <img class="mute" src="p_mute.png">
+                <div id="蘇貞昌">
+                    <img class="participator" src="蘇貞昌.png" />
+                    <div class="floating_zone">
+                        <div class="floating_menu" onclick="switch_pos(this)">
+                            <img class="floating_menu_pic" src="floating_unfixed.png">
+                            <img class="floating_menu_pic" src="floating_mute.png">
+                            <img class="floating_menu_pic" src="floating_remove.png">
+                        </div>
+                    </div>
+                    <img class="x" src="x.png" onclick="hide_participator(this)">
+                </div>
+                <p class="p_name">蘇貞昌</p>
+            </div>
+        </div>
+    </div>
+    <div class="bottom">
+        <p id="bottom_words">凌晨12:43 | Web Programming</p>
+        <div id="middle_bar">
+            <img class="bottom_pic" src="middle_bar_unmute.png" />
+            <img class="bottom_pic" src="middle_bar.png" />
+            <div id="mute">
+                <input id="0" type="checkbox" />
+                <label for="0">
+                    <img class="bottom_pic" id="mute_pic" src="middle_bar_mute.png" />
+                </label>
+            </div>
+        </div>
+        <img class="bottom_pic" src="right_bar.png" />
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>

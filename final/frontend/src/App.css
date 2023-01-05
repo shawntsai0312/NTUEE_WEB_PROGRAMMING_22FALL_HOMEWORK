@@ -1,0 +1,17 @@
+.main {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  margin-top: 10vh;
+  overflow-x: hidden;
+}
+
+.menuBar {
+  flex: 1;
+  position: fixed;
+}
+
+.Page {
+  flex: 4;
+  margin-left: 20vw;
+}

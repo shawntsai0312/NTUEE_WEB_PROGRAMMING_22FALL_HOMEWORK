@@ -1,0 +1,17 @@
+.followingPageContainer {
+    padding-top: 3vh;
+    /* padding-left: 5vw; */
+    position: fixed; 
+    display: flex;
+    justify-content: center;
+    width: 80vw;
+}
+
+.followingPageTitle {
+    margin: 0px;
+    padding-top: 30px;
+}
+
+.stackItem {
+    width: 70vw;
+}
