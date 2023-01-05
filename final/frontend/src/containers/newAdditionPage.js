@@ -163,7 +163,7 @@ const NewAdditionPage = () => {
             setDescription('');
             setAddingItems([]);
             setIsNameFilled(true);
-            setMenuListSelected('Collection');
+            setMenuListSelected('collectionPage');
             navigate('/collectionPage');
         } else {
             if (userEmail === '') {
