@@ -1,2 +1,2 @@
 # Better Linktree
-test
+better linktree
